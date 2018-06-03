@@ -1,5 +1,7 @@
 package web;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import data.TestPropertiesLoader;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -19,5 +21,9 @@ public class BasicTestCase {
     @Before
     public void openPage() {
         open(baseUrl);
+    }
+
+    void verifyMessageVisibleAndHasText(SelenideElement element, String message) {
+        element.shouldBe(Condition.visible).shouldHave(Condition.text(message));
     }
 }
