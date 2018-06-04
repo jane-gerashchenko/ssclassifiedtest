@@ -17,13 +17,13 @@ public class SSClassifiedTest extends BasicTestCase {
     @Test
     public void testFindContent(){
 
-        SearchPage.searchText("QA engineer");
+        SearchPage.searchText("Три столицы на Дунае");
         SearchPage.selectFirstResult();
-        verifyMessageVisibleAndHasText(announcementContent, "QA engineer");
+        verifyMessageVisibleAndHasText(announcementContent, "Три столицы на Дунае");
 
         MemoPage.addToFavorites();
         memoButton.click();
         MemoPage.selectAddedAnnouncement();
-        verifyMessageVisibleAndHasText(announcementContent, "QA engineer");
+        verifyMessageVisibleAndHasText(announcementContent, "Три столицы на Дунае");
     }
 }
