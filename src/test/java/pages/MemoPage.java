@@ -11,22 +11,28 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class MemoPage {
 
-    private SelenideElement addToFavorites = $("#a_fav");
+    private SelenideElement addToMemo = $("#a_fav");
     private SelenideElement confirmationMessage = $("#alert_msg");
     private SelenideElement confirmationButton = $("#alert_ok");
     private ElementsCollection addedAnnouncements = $$("#page_main form table tr");
-    private SelenideElement favoriteAnnouncement = $("#page_main form table tr:nth-of-type(2)");
+    private SelenideElement favoriteAd = $("#page_main form table tr:nth-of-type(2)");
+    private SelenideElement memoButton = $(".a_menu[title=\"Memo\"]");
 
     @Step("Add to favorites")
-    public void addToFavorites() {
-        addToFavorites.click();
+    public void addAnnouncementToMemo() {
+        addToMemo.click();
         confirmationMessage.shouldHave(Condition.exactText("Advertisement added to favorites."));
         confirmationButton.click();
     }
 
-    @Step("Select favorite announcement")
+    @Step("Select favorite Ad")
     public void selectAddedAnnouncement(){
         addedAnnouncements.shouldHave(CollectionCondition.size(2));
-        favoriteAnnouncement.click();
+        favoriteAd.click();
+    }
+
+    @Step("Go to Memo")
+    public void goToMemo() {
+        memoButton.click();
     }
 }

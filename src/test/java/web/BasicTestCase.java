@@ -6,11 +6,16 @@ import data.TestPropertiesLoader;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class BasicTestCase {
+
     private static String baseUrl = TestPropertiesLoader.getBaseUrl();
     private static String browser = TestPropertiesLoader.getBrowser();
+    private static String searchText = TestPropertiesLoader.getSearchText();
+
+    private SelenideElement announcementContent = $("#msg_div_msg");
 
 
     @BeforeClass
@@ -23,7 +28,7 @@ public class BasicTestCase {
         open(baseUrl);
     }
 
-    void verifyMessageVisibleAndHasText(SelenideElement element, String message) {
-        element.shouldBe(Condition.visible).shouldHave(Condition.text(message));
+    void verifyAdVisibleAndHasSearchText() {
+        announcementContent.shouldBe(Condition.visible).shouldHave(Condition.text(searchText));
     }
 }

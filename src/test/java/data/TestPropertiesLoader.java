@@ -7,11 +7,13 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class TestPropertiesLoader {
+
     private static Properties testProperties;
 
     private static final String TEST_PROPERTIES = "test.properties";
     private static final String BASE_URL = "baseUrl";
     private static final String BROWSER = "browser";
+    private static final String SEARCH_TEXT = "searchText";
 
     private TestPropertiesLoader() {
     }
@@ -47,6 +49,10 @@ public class TestPropertiesLoader {
 
     public static String getBaseUrl() {
         return getPropertyAndFailIfMissing(BASE_URL);
+    }
+
+    public static String getSearchText() {
+        return getPropertyAndFailIfMissing(SEARCH_TEXT);
     }
 
     private static String getPropertyAndFailIfMissing(final String key) {
