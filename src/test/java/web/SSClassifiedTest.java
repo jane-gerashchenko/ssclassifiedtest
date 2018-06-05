@@ -2,6 +2,7 @@ package web;
 
 import com.codeborne.selenide.SelenideElement;
 import org.junit.Test;
+import io.qameta.allure.junit4.DisplayName;
 import pages.MemoPage;
 import pages.SearchPage;
 
@@ -15,6 +16,7 @@ public class SSClassifiedTest extends BasicTestCase {
     private MemoPage MemoPage = new MemoPage();
 
     @Test
+    @DisplayName("Test search and adding to favorites")
     public void testFindContent(){
 
         SearchPage.searchText("Три столицы на Дунае");
