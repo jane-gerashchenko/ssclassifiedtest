@@ -1,4 +1,6 @@
 target
 build
 .idea
+.allure
+allure-report-example
 ssclassifiedtest.iml
