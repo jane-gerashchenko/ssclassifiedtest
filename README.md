@@ -11,6 +11,7 @@
     * Search for ad
     * Adding ad to memo as a favorite
 3. Use [Allure](http://allure.qatools.ru/) for reporting.
+4. Use [Travis](https://travis-ci.org) as CI
 
 ## Instruction
 
