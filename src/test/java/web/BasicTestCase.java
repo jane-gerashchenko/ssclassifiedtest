@@ -14,7 +14,7 @@ public class BasicTestCase {
     private static String baseUrl = TestPropertiesLoader.getBaseUrl();
     private static String browser = TestPropertiesLoader.getBrowser();
 
-    private SelenideElement announcementContent = $("#msg_div_msg");
+    private SelenideElement advertisementContent = $("#msg_div_msg");
     private SelenideElement confirmationMessage = $("#alert_msg");
 
 
@@ -28,11 +28,11 @@ public class BasicTestCase {
         open(baseUrl);
     }
 
-    void verifyAdvertisementVisibleAndHasText(String message) {
-        announcementContent.shouldBe(Condition.visible).shouldHave(Condition.text(message));
+    void verifyAdvertisementHasText(String message) {
+        advertisementContent.shouldHave(Condition.text(message));
     }
 
-    void verifyConfirmationMessageVisibleAndHasText(String message) {
-        confirmationMessage.shouldBe(Condition.visible).shouldHave(Condition.exactText(message));
+    void verifyConfirmationMessageHasText(String message) {
+        confirmationMessage.shouldHave(Condition.exactText(message));
     }
 }

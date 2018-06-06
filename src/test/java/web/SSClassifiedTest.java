@@ -17,16 +17,16 @@ public class SSClassifiedTest extends BasicTestCase {
         //Search for advertisement
         SearchPage.searchText("Tallina - Helsinki - Stokholma");
         SearchPage.selectFirstAd();
-        verifyAdvertisementVisibleAndHasText("Tallina - Helsinki - Stokholma");
+        verifyAdvertisementHasText("Tallina - Helsinki - Stokholma");
 
         //Add advertisement to favorites list
         FavoritesPage.addAdvertisementToFavorites();
-        verifyConfirmationMessageVisibleAndHasText("Advertisement added to favorites.");
+        verifyConfirmationMessageHasText("Advertisement added to favorites.");
         FavoritesPage.confirmAction();
 
         //Verify advertisement in the favorites list
         FavoritesPage.goToFavorites();
         FavoritesPage.selectAddedAdvertisement();
-        verifyAdvertisementVisibleAndHasText("Tallina - Helsinki - Stokholma");
+        verifyAdvertisementHasText("Tallina - Helsinki - Stokholma");
     }
 }
