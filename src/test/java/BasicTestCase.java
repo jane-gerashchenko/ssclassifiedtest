@@ -1,5 +1,3 @@
-package web;
-
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import data.TestPropertiesLoader;
@@ -13,9 +11,9 @@ public class BasicTestCase {
 
     private static String baseUrl = TestPropertiesLoader.getBaseUrl();
     private static String browser = TestPropertiesLoader.getBrowser();
-    private static String searchText = TestPropertiesLoader.getSearchText();
 
     private SelenideElement announcementContent = $("#msg_div_msg");
+    private SelenideElement confirmationMessage = $("#alert_msg");
 
 
     @BeforeClass
@@ -28,7 +26,11 @@ public class BasicTestCase {
         open(baseUrl);
     }
 
-    void verifyAdVisibleAndHasSearchText() {
-        announcementContent.shouldBe(Condition.visible).shouldHave(Condition.text(searchText));
+    void verifyAdvertisementVisibleAndHasText(String message) {
+        announcementContent.shouldBe(Condition.visible).shouldHave(Condition.text(message));
+    }
+
+    void verifyConfirmationMessageVisibleAndHasText(String message) {
+        confirmationMessage.shouldBe(Condition.visible).shouldHave(Condition.exactText(message));
     }
 }
