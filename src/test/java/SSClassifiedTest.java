@@ -6,7 +6,7 @@ import pages.SearchPage;
 public class SSClassifiedTest extends BasicTestCase {
 
     private SearchPage SearchPage = new SearchPage();
-    private FavoritesPage FaforitesPage = new FavoritesPage();
+    private FavoritesPage FavoritesPage = new FavoritesPage();
 
     @Test
     @DisplayName("Test search for ad and add it to favorites list")
@@ -18,13 +18,13 @@ public class SSClassifiedTest extends BasicTestCase {
         verifyAdvertisementVisibleAndHasText("Tallina - Helsinki - Stokholma");
 
         //Add advertisement to favorites list
-        FaforitesPage.addAdvertisementToFavorites();
+        FavoritesPage.addAdvertisementToFavorites();
         verifyConfirmationMessageVisibleAndHasText("Advertisement added to favorites.");
-        FaforitesPage.confirmAction();
+        FavoritesPage.confirmAction();
 
         //Verify advertisement in the favorites list
-        FaforitesPage.goToFavorites();
-        FaforitesPage.selectAddedAdvertisement();
+        FavoritesPage.goToFavorites();
+        FavoritesPage.selectAddedAdvertisement();
         verifyAdvertisementVisibleAndHasText("Tallina - Helsinki - Stokholma");
     }
 }
