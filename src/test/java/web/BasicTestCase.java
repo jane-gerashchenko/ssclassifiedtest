@@ -1,3 +1,5 @@
+package web;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import data.TestPropertiesLoader;
