@@ -2,5 +2,5 @@ target
 build
 .idea
 .allure
-allure-report-example
+allure-results
 ssclassifiedtest.iml
