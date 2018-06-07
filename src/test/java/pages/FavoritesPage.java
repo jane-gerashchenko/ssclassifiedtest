@@ -18,7 +18,7 @@ public class FavoritesPage {
     }
 
     @Step("Confirm adding advertisement to favorites list")
-    public void confirmAction() {
+    public void confirm() {
         confirmationButton.click();
     }
 

@@ -10,23 +10,22 @@ public class SSClassifiedTest extends BasicTestCase {
     private SearchPage SearchPage = new SearchPage();
     private FavoritesPage FavoritesPage = new FavoritesPage();
 
+    private String searchText = "Tallina - Helsinki - Stokholma";
+
     @Test
-    @DisplayName("Test search for ad and add it to favorites list")
-    public void testFindContent(){
+    @DisplayName("Test search for advertisement and add it to favorites list")
+    public void testFindAdvertisementAndAddToFavorites(){
 
-        //Search for advertisement
-        SearchPage.searchText("Tallina - Helsinki - Stokholma");
-        SearchPage.selectFirstAd();
-        verifyAdvertisementHasText("Tallina - Helsinki - Stokholma");
+        SearchPage.searchFor(searchText);
+        SearchPage.selectFirstAdvertisement();
+        verifyAdvertisementHasText(searchText);
 
-        //Add advertisement to favorites list
         FavoritesPage.addAdvertisementToFavorites();
         verifyConfirmationMessageHasText("Advertisement added to favorites.");
-        FavoritesPage.confirmAction();
+        FavoritesPage.confirm();
 
-        //Verify advertisement in the favorites list
         FavoritesPage.goToFavorites();
         FavoritesPage.selectAddedAdvertisement();
-        verifyAdvertisementHasText("Tallina - Helsinki - Stokholma");
+        verifyAdvertisementHasText(searchText);
     }
 }

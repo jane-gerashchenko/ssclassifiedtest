@@ -9,16 +9,16 @@ public class SearchPage {
 
     private SelenideElement searchButton = $(".a_menu[title=\"Search announcements\"]");
     private SelenideElement searchField = $("#ptxt");
-    private SelenideElement firstAd = $("#page_main table:nth-of-type(2) tr:nth-of-type(2)");
+    private SelenideElement firstAdvertisement = $("#page_main table:nth-of-type(2) tr:nth-of-type(2)");
 
-    @Step("Search by text: '{text}'")
-    public void searchText(String message) {
+    @Step("Search by text: '{message}'")
+    public void searchFor(String message) {
         searchButton.click();
         searchField.setValue(message).pressEnter();
     }
 
     @Step("Select first Ad")
-    public void selectFirstAd() {
-        firstAd.click();
+    public void selectFirstAdvertisement() {
+        firstAdvertisement.click();
     }
 }
