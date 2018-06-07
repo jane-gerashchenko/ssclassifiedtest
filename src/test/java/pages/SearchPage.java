@@ -17,7 +17,7 @@ public class SearchPage {
         searchField.setValue(message).pressEnter();
     }
 
-    @Step("Select first Ad")
+    @Step("Select first Advertisement")
     public void selectFirstAdvertisement() {
         firstAdvertisement.click();
     }
