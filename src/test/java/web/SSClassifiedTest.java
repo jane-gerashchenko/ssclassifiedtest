@@ -13,10 +13,43 @@ public class SSClassifiedTest extends BasicTestCase {
     private String searchText = "Tallina - Helsinki - Stokholma";
 
     @Test
-    @DisplayName("Test search for advertisement and add it to favorites list")
-    public void testFindAdvertisementAndAddToFavorites(){
+    @DisplayName("Test default search page")
+    public void testSearchPage() {
 
-        SearchPage.searchFor(searchText);
+        openPage();
+        SearchPage.openSearch();
+        verifySearchFieldNameHasText("Ought word or phrase:");
+        verifySectionFilterHasText("Section:");
+        verifyRegionFilterHasText("Town, region:");
+        verifyPeriodFilterHasText("Search for the period:");
+    }
+
+    @Test
+    @DisplayName("Test search query with empty search results")
+    public void testEmptySearchResults() {
+
+        openPage();
+        SearchPage.openSearch();
+        SearchPage.searchFor("6cd5862a-fb61-495d-96a8-45540638c967-to-get-zero-results");
+        verifyEmptySearchResultPageHasText("On your inquiry it is not found any message");
+    }
+
+   @Test
+   @DisplayName("Test search for valid advertisement")
+   public void testSearchForAdvertisement() {
+
+       openPage();
+       SearchPage.openSearch();
+       SearchPage.searchFor(searchText);
+       SearchPage.selectFirstAdvertisement();
+       verifyAdvertisementHasText(searchText);
+   }
+
+    @Test
+    @DisplayName("Test search for advertisement and add it to favorites list")
+    public void testAddAdvertisementToFavorites(){
+
+        openPage("/search-result/?q=Tallina+-+Helsinki+-+Stokholma");
         SearchPage.selectFirstAdvertisement();
         verifyAdvertisementHasText(searchText);
 
@@ -27,5 +60,21 @@ public class SSClassifiedTest extends BasicTestCase {
         FavoritesPage.goToFavorites();
         FavoritesPage.selectAddedAdvertisement();
         verifyAdvertisementHasText(searchText);
+    }
+
+    @Test
+    @DisplayName("Test add advertisement via checkbox to favorites and remove it from favorites")
+    public void testAddAdvertisementToFavoritesAndRemoveFromFavorites() {
+
+        openPage("/search-result/?q=Tallina+-+Helsinki+-+Stokholma");
+        SearchPage.selectFoundAdvertisementViaCheckbox();
+        SearchPage.addAdvertisementToFavorites();
+        verifyConfirmationMessageHasText("Sludinājumi ir pievienoti Memo.");
+        FavoritesPage.confirm();
+
+        FavoritesPage.goToFavorites();
+        FavoritesPage.selectFavoriteAdvertisementViaCheckbox();
+        FavoritesPage.removeAdvertisementFromFavorites();
+        verifyEmptyFavoritesPageHasText("Select the messages.");
     }
 }

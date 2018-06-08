@@ -11,6 +11,8 @@ public class FavoritesPage {
     private SelenideElement confirmationButton = $("#alert_ok");
     private SelenideElement favoriteAdvertisement = $("#page_main form table tr:nth-of-type(2)");
     private SelenideElement memoButton = $(".a_menu[title=\"Memo\"]");
+    private SelenideElement deleteFromFavorites = $("#del_selected_a");
+    private SelenideElement advertisementCheckbox = $("#page_main form table tr:nth-of-type(2) input[name='mid[]']");
 
     @Step("Add advertisement to favorites list")
     public void addAdvertisementToFavorites() {
@@ -30,5 +32,15 @@ public class FavoritesPage {
     @Step("Select favorite advertisement")
     public void selectAddedAdvertisement(){
         favoriteAdvertisement.click();
+    }
+
+    @Step("Select favorite advertisement using checkbox")
+    public void selectFavoriteAdvertisementViaCheckbox() {
+        advertisementCheckbox.click();
+    }
+
+    @Step("Delete advertisement from favorites list")
+    public void removeAdvertisementFromFavorites() {
+        deleteFromFavorites.click();
     }
 }
