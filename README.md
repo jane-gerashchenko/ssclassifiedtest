@@ -10,9 +10,14 @@
     * [Selenide](http://selenide.org/) library for UI test
     * JUnit as test runner
 2. UI test:
-    * Search for advertisement
-    * Adding it to memo as a favorite
-    * Verify that advertisement has been added to the favorite list
+    * Search page:
+      * Default state of search page
+      * Search with empty string
+      * Search for advertisement
+    * Favorites page:
+      * Default state of Favorites page
+      * Opening advertisement and adding it to the favorite list
+      * Selecting advertisement via checkbox, adding it to favorites list and deleting from the list.
 3. Use [Allure](http://allure.qatools.ru/) for reporting.
 4. Use [Travis](https://travis-ci.org) as CI
 
