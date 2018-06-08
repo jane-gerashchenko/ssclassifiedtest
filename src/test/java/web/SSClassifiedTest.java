@@ -69,6 +69,7 @@ public class SSClassifiedTest extends BasicTestCase {
         FavoritesPage.addAdvertisementToFavorites();
         verifyConfirmationMessageHasText("Advertisement added to favorites.");
         FavoritesPage.confirm();
+        verifyFavoritesCounterHasText("(1)");
 
         FavoritesPage.goToFavorites();
         FavoritesPage.selectAddedAdvertisement();
@@ -84,6 +85,7 @@ public class SSClassifiedTest extends BasicTestCase {
         SearchPage.addAdvertisementToFavorites();
         verifyConfirmationMessageHasText("Sludinājumi ir pievienoti Memo.");
         FavoritesPage.confirm();
+        verifyFavoritesCounterHasText("(1)");
 
         FavoritesPage.goToFavorites();
         FavoritesPage.selectFavoriteAdvertisementViaCheckbox();

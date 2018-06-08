@@ -27,6 +27,7 @@ public class BasicTestCase {
     private SelenideElement viewModeSelector = $(".filter_sel");
     private SelenideElement favoritesLink = $(".a9a");
     private SelenideElement viewedAdsLink = $(".filter_second_line_dv .a1");
+    private SelenideElement favoritesCounter = $("#mnu_fav_id");
 
     @BeforeClass
     public static void setup() {
@@ -92,5 +93,9 @@ public class BasicTestCase {
 
     void verifyViewedAdsLinkHasText(String text) {
         viewedAdsLink.shouldHave(Condition.exactText(text));
+    }
+
+    void verifyFavoritesCounterHasText(String text) {
+        favoritesCounter.shouldHave(Condition.exactText(text));
     }
 }
