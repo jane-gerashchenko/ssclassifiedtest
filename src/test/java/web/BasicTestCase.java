@@ -1,8 +1,10 @@
 package web;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import data.TestPropertiesLoader;
+import org.junit.After;
 import org.junit.BeforeClass;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -20,11 +22,20 @@ public class BasicTestCase {
     private SelenideElement sectionFilter = $("#page_main table tr:nth-of-type(4) td:nth-of-type(1)");
     private SelenideElement regionFilter = $("#page_main table tr:nth-of-type(6) td:nth-of-type(1)");
     private SelenideElement periodFilter = $("#page_main table tr:nth-of-type(7) td:nth-of-type(1)");
+    private SelenideElement searchButton = $("#sbtn");
     private SelenideElement emptySearchResult = $("#page_main table:nth-of-type(2) td");
+    private SelenideElement viewModeSelector = $(".filter_sel");
+    private SelenideElement favoritesLink = $(".a9a");
+    private SelenideElement viewedAdsLink = $(".filter_second_line_dv .a1");
 
     @BeforeClass
     public static void setup() {
         System.setProperty("selenide.browser", browser);
+    }
+
+    @After
+    public void testTearDown() {
+        Selenide.close();
     }
 
     public void openPage() {
@@ -65,5 +76,21 @@ public class BasicTestCase {
 
     void verifyEmptySearchResultPageHasText(String text) {
         emptySearchResult.shouldHave(Condition.exactText(text));
+    }
+
+    void verifySearchButtonHasText(String text) {
+        searchButton.shouldHave(Condition.value(text));
+    }
+
+    void verifyViewModeSelectorAvailability() {
+        viewModeSelector.should(Condition.exist);
+    }
+
+    void verifyFavoritesLinkHasText(String text) {
+        favoritesLink.shouldHave(Condition.exactText(text));
+    }
+
+    void verifyViewedAdsLinkHasText(String text) {
+        viewedAdsLink.shouldHave(Condition.exactText(text));
     }
 }

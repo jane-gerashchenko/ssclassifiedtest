@@ -13,8 +13,8 @@ public class SSClassifiedTest extends BasicTestCase {
     private String searchText = "Tallina - Helsinki - Stokholma";
 
     @Test
-    @DisplayName("Test default search page")
-    public void testSearchPage() {
+    @DisplayName("Test default search page state")
+    public void testSearchPageElementsPresent() {
 
         openPage();
         SearchPage.openSearch();
@@ -22,20 +22,21 @@ public class SSClassifiedTest extends BasicTestCase {
         verifySectionFilterHasText("Section:");
         verifyRegionFilterHasText("Town, region:");
         verifyPeriodFilterHasText("Search for the period:");
+        verifySearchButtonHasText("Search");
     }
 
     @Test
-    @DisplayName("Test search query with empty search results")
-    public void testEmptySearchResults() {
+    @DisplayName("Test empty search")
+    public void testEmptySearch() {
 
         openPage();
         SearchPage.openSearch();
-        SearchPage.searchFor("6cd5862a-fb61-495d-96a8-45540638c967-to-get-zero-results");
+        SearchPage.searchFor("");
         verifyEmptySearchResultPageHasText("On your inquiry it is not found any message");
     }
 
    @Test
-   @DisplayName("Test search for valid advertisement")
+   @DisplayName("Test search to find advertisement")
    public void testSearchForAdvertisement() {
 
        openPage();
@@ -46,10 +47,22 @@ public class SSClassifiedTest extends BasicTestCase {
    }
 
     @Test
+    @DisplayName("Test default favorites page state")
+    public void testFavoritesPageElementsPresent() {
+
+        openPage();
+        FavoritesPage.goToFavorites();
+        verifyViewModeSelectorAvailability();
+        verifyFavoritesLinkHasText("Favorites");
+        verifyViewedAdsLinkHasText("Recently viewed ads");
+        verifyEmptyFavoritesPageHasText("Select the messages.");
+    }
+
+    @Test
     @DisplayName("Test search for advertisement and add it to favorites list")
     public void testAddAdvertisementToFavorites(){
 
-        openPage("/search-result/?q=Tallina+-+Helsinki+-+Stokholma");
+        openPage("/search-result/?q=" + searchText);
         SearchPage.selectFirstAdvertisement();
         verifyAdvertisementHasText(searchText);
 
@@ -66,7 +79,7 @@ public class SSClassifiedTest extends BasicTestCase {
     @DisplayName("Test add advertisement via checkbox to favorites and remove it from favorites")
     public void testAddAdvertisementToFavoritesAndRemoveFromFavorites() {
 
-        openPage("/search-result/?q=Tallina+-+Helsinki+-+Stokholma");
+        openPage("/search-result/?q=" + searchText);
         SearchPage.selectFoundAdvertisementViaCheckbox();
         SearchPage.addAdvertisementToFavorites();
         verifyConfirmationMessageHasText("Sludinājumi ir pievienoti Memo.");
