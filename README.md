@@ -7,9 +7,9 @@
 1. Tech stack:
     * Java
     * Maven
-    * [Selenide](http://selenide.org/) library for UI test
+    * [Selenide](http://selenide.org/) library for UI tests
     * JUnit as test runner
-2. UI test:
+2. UI tests:
     * Search page:
       * Default state of search page
       * Search with empty string
@@ -18,8 +18,8 @@
       * Default state of Favorites page
       * Opening advertisement and adding it to the favorite list
       * Selecting advertisement via checkbox, adding it to favorites list and deleting from the list.
-3. Use [Allure](http://allure.qatools.ru/) for reporting.
-4. Use [Travis](https://travis-ci.org) as CI
+3. [Allure](http://allure.qatools.ru/) for reporting.
+4. [Travis](https://travis-ci.org) as CI
 
 ## Instruction
 

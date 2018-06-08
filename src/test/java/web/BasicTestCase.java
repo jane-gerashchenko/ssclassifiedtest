@@ -1,14 +1,14 @@
 package web;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import data.TestPropertiesLoader;
 import org.junit.After;
 import org.junit.BeforeClass;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.close;
 
 public class BasicTestCase {
 
@@ -36,7 +36,7 @@ public class BasicTestCase {
 
     @After
     public void testTearDown() {
-        Selenide.close();
+        close();
     }
 
     public void openPage() {

@@ -14,7 +14,7 @@ public class SearchPage {
     private SelenideElement addToFavorites = $("#a_fav_sel");
 
 
-    @Step("Search default page")
+    @Step("Go to search page")
     public void openSearch() {
         searchButton.click();
     }
@@ -24,7 +24,7 @@ public class SearchPage {
         searchField.setValue(text).pressEnter();
     }
 
-    @Step("Select first advertisement by clicking on it")
+    @Step("Select first found advertisement by clicking on it")
     public void selectFirstAdvertisement() {
         firstAdvertisement.click();
     }
